@@ -30,8 +30,7 @@ def login(account,password):
     
     s.post(url="https://m.nfu.edu.tw/login/login",data=payload,cookies=d['cookie'],allow_redirects=True)
     res = s.get(url="https://m.nfu.edu.tw/scscore/",cookies=d['cookie'])
-    bs = BeautifulSoup(res.text,"html.parser")
-    resultes = bs.find_all('li',class_='result')
+    resultes = BeautifulSoup(res.text,"html.parser").find_all('li',class_='result')
     print(f'學號：{account} 的期末成績')
     print('-------------------------------')
     for i in resultes:
